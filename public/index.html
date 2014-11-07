@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAE :: Inicial</title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.1.0/pure-min.css">
+  <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="include/css/style.css">
+  <script src="include/js/jquery.min.js"></script>
+
+ <script type="text/javascript">
+ $(document).ready(function() {
+    $('#resposta').hide();
+
+    $('#btn_enviar').on('click', function() {
+
+		var mail = $('#txt-mail').val();
+		var senha = $('#txt-senha').val();
+
+		$('#resposta').html('');
+        $('#resposta').fadeOut();
+        
+    	$.ajax({
+			type: "post",
+			url: "admin/usuario/CRUD/logar.php",
+			data: {mail: mail, senha: senha},
+			success: function(resposta) {		
+				switch(resposta) {			
+					case 'sucesso':
+						$('#resposta').html('Login efetuado!');
+				        $('#resposta').fadeIn();
+				        setTimeout(function() {  
+				        	window.location.href = "/avaliacao/admin/principal.php";
+					    }, 3000);
+				    	break;
+					case 'invalido':
+						$('#resposta').html('Usuário e/ou senha inválido(s)!');
+				        $('#resposta').fadeIn();
+						break;
+					case 'inexistente':
+						$('#resposta').html('Usuário e/ou senha inválido(s)!');
+				        $('#resposta').fadeIn();
+						break;
+					default:
+						break;
+				}
+			}
+		});
+       
+
+        return false;
+    });
+
+ });
+ </script>
+ </head>
+ <body>
+ <div class="header">
+ 	 <div class="banner"></div>
+ </div>
+ <br />
+ <br />
+ <br />
+ <br />
+ <div class="tudo pure-g">
+  <div class="pure-u-3-4">
+    <h1>Administração</h1>
+  	<form class="pure-form pure-form-aligned form-login">
+   		<fieldset>
+	        <div class="pure-control-group">
+	            <label for="name">Digite o e-mail</label>
+	            <input id="txt-mail" type="text" placeholder="E-mail">
+	        </div>
+	
+	        <div class="pure-control-group">
+	            <label for="password">Digite a senha</label>
+	            <input id="txt-senha" type="password" placeholder="Senha">
+	        </div>
+	        <br />
+	        <button type="submit" id="btn_enviar" class="pure-button pure-button-primary">Entrar</button>
+          <br />
+          <br />
+             <label id="resposta"></label>
+   	 </fieldset>
+	</form>
+   </div>
+ </div>
+ </body>
+</html>
