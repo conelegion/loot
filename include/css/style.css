@@ -7,7 +7,12 @@ font-family: base02;
 
 html,
 body {
-	/*font: 14px base02; */
+	background-color: #000000;
+	background-repeat: no-repeat;
+	background-position: top center;
+	background-attachment: scroll;
+	background-image: url("/loot/img/background.jpg");
+	font: 14px base02; 
 	
 	margin: 0;
 	padding:0;
@@ -19,7 +24,7 @@ body {
 	min-height:100%;
 	position:relative;
 
-	background:#000;
+	background:#191919;
 }
 
 #header {
@@ -35,17 +40,20 @@ body {
 
 #content {
 	padding:10px;
-	padding-bottom:50px;   /* Height of the footer element */
+	padding-bottom:80px;   /* Height of the footer element */
 }
 
 #footer {
+	font-family: "arial";
+	font-size: 12px;
+	
 	width:100%;
-	height:50px;
+	height:80px;
 	position:absolute;
 	bottom:0;
 	left:0;
 	
-	background: green;
+	background: #0e0e0e;
 }
 
 .align-center {
@@ -53,11 +61,15 @@ body {
 }
 
 #btn-logar {
-	/* font: 14px base02; */
+	font: 14px base02;
 	font-weight: bold;
 
 	background: #ff6600;
 	color: #000;
+}
+
+.pure-input-1 {
+	border-color: #a60303 !important;
 }
 
 .menu{list-style:none; border:1px solid #c0c0c0; background-color: #236084; float:left; padding-left: 0px; width: 100%; margin-top: 1px;}
@@ -73,5 +85,4 @@ body {
 .menu li:hover ul, .menu li.over ul{display:block;}
 
 .menu li ul li{background-color: #236084; border:1px solid #c0c0c0; display:block; width:150px;}
-
 
