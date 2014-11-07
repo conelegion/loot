@@ -52,7 +52,7 @@ CREATE TABLE `class` (
   `id_class` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
   PRIMARY KEY (`id_class`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,34 +94,6 @@ INSERT INTO `horario_raid` VALUES (1,'Sábado','15:00','03:00',2),(2,'Domingo','
 UNLOCK TABLES;
 
 --
--- Table structure for table `loot`
---
-
-DROP TABLE IF EXISTS `loot`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `loot` (
-  `id_loot` int(11) NOT NULL AUTO_INCREMENT,
-  `participacoes` int(11) NOT NULL DEFAULT '0',
-  `loot_recebidos` int(11) NOT NULL DEFAULT '0',
-  `ativo` tinyint(1) NOT NULL DEFAULT '1',
-  `character_id_character` int(11) NOT NULL,
-  PRIMARY KEY (`id_loot`),
-  KEY `fk_loot_character1_idx` (`character_id_character`),
-  CONSTRAINT `fk_loot_character1` FOREIGN KEY (`character_id_character`) REFERENCES `personagem` (`id_character`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `loot`
---
-
-LOCK TABLES `loot` WRITE;
-/*!40000 ALTER TABLE `loot` DISABLE KEYS */;
-/*!40000 ALTER TABLE `loot` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `personagem`
 --
 
@@ -129,13 +101,15 @@ DROP TABLE IF EXISTS `personagem`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `personagem` (
-  `id_character` int(11) NOT NULL AUTO_INCREMENT,
+  `id_character` int(11) NOT NULL,
   `nome` varchar(45) DEFAULT NULL,
   `race_id_race` int(11) DEFAULT NULL,
   `spec_id_spec` int(11) DEFAULT NULL,
   `ativo` tinyint(1) DEFAULT '1',
   `user_id_user` int(11) DEFAULT NULL,
   `raid_id_raid` int(11) DEFAULT NULL,
+  `participacoes` int(11) DEFAULT '0',
+  `loots` int(11) DEFAULT '0',
   PRIMARY KEY (`id_character`),
   KEY `fk_character_race1_idx` (`race_id_race`),
   KEY `fk_character_spec1_idx` (`spec_id_spec`),
@@ -145,7 +119,7 @@ CREATE TABLE `personagem` (
   CONSTRAINT `fk_character_raid1` FOREIGN KEY (`raid_id_raid`) REFERENCES `raid` (`id_raid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_character_spec1` FOREIGN KEY (`spec_id_spec`) REFERENCES `spec` (`id_spec`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_character_user1` FOREIGN KEY (`user_id_user`) REFERENCES `user` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,7 +128,7 @@ CREATE TABLE `personagem` (
 
 LOCK TABLES `personagem` WRITE;
 /*!40000 ALTER TABLE `personagem` DISABLE KEYS */;
-INSERT INTO `personagem` VALUES (1,'ZÃ³dd',2,21,1,1,2);
+INSERT INTO `personagem` VALUES (0,'Bostildo',8,8,1,1,2,NULL,NULL),(1,'ZÃ³dd',2,21,1,1,2,0,0);
 /*!40000 ALTER TABLE `personagem` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,4 +279,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-11-06 17:04:27
+-- Dump completed on 2014-11-07 16:42:36
