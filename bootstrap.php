@@ -28,8 +28,8 @@ $isDevMode = true;
 $dbParams = array(
     'driver'   => 'pdo_mysql',
     'user'     => 'root',
-	'host'     => 'localhost:3307',
-    'password' => 'usbw',
+	//'host'     => 'localhost:3307',
+    'password' => '',
     'dbname'   => 'loot',
 );
 
