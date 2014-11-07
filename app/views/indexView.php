@@ -30,7 +30,7 @@
  </script>
 </head>
 <body>
-	<div id="wrapper" class="pure-u-17-24">
+	<div id="wrapper" class="pure-u-5-8">
 		<div id="header"><img src="/loot/img/cone-legion2.png"></div>
 		<div id="content">
 			<br />
