@@ -41,10 +41,20 @@ class Character {
     private $user;
     
     /**
-     * @ManyToOne(targetEntity="Raid", cascade={"persist"})
+     * @ManyToOne(targetEntity="Raid", cascade={"persist"}, inversedBy="members")
      * @JoinColumn(name="raid_id_raid", referencedColumnName="id_raid")
      */
     private $raid;
+
+    /**
+    * @Column(type="integer", name="participacoes")
+    */
+    private $participacoes;
+    
+    /**
+    * @Column(type="integer", name="loots")
+    */
+    private $loots;
 	
 	public function getId() {
 		return $this->id;
@@ -100,6 +110,22 @@ class Character {
 
 	public function setRaid($raid) {
 		$this->raid = $raid;
+	}
+	
+	public function getParticipacoes() {
+		return $this->participacoes;
+	}
+
+	public function getLoots() {
+		return $this->loots;
+	}
+
+	public function setParticipacoes($participacoes) {
+		$this->participacoes = $participacoes;
+	}
+
+	public function setLoots($loots) {
+		$this->loots = $loots;
 	}
 }
 

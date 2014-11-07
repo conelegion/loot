@@ -1,6 +1,7 @@
 <?php
 class Controller {
 	protected function View($layout = '', $dados = null) {
+		
 		if(empty($layout))	{
 			echo 'erro';
 		} else {

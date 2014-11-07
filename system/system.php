@@ -5,7 +5,7 @@ class System extends Route {
 	private $_controller;
 	private $_action;
 	
-	function __construct() {
+	function __construct() {	
 		$this->setUrl();
 		$this->setExplode();
 		$this->setController();

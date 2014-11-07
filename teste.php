@@ -28,7 +28,7 @@ $raid = new Raid;
  * utilizando a função setNome 
  * Defino o nome da categoria a ser criada no banco de dados
  */
-
+/* 
 $classes = $entityManager->getRepository('Classe')->findAll();
 echo "<h1>Classes  e Specs</h1>";
 foreach ($classes as $classe) {
@@ -37,8 +37,16 @@ foreach ($classes as $classe) {
 		echo "&nbsp;&nbsp;►&nbsp;".$spec->getNome()." (".$spec->getRole()->getNome()." - ".$spec->getAtributo()->getNome().")<br />";
 	}
 }
+ */
+
+$raid = $entityManager->getRepository('Raid')->findOneBy(array('nome' => 'teste'));
 
 
+
+
+foreach ($raid->getMembers() as $member) {
+	echo $member->getNome();
+}
 
 
 //$user = $entityManager->getRepository('User')->findOneBy(array('nome' => 'Guilherme'));

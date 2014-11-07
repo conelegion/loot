@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 class Raid {	
 	public function __construct() {
 		$this->horarios = new ArrayCollection();
+		$this->members = new ArrayCollection();
 	}
 	
     /**
@@ -43,6 +44,12 @@ class Raid {
      * @OneToMany(targetEntity="Horario", mappedBy="raid")
      **/
     public $horarios;
+    
+    /**
+     * @OneToMany(targetEntity="Character", mappedBy="raid")
+     **/
+    public $members;
+   
   
 	public function getId() {
 		return $this->id;
@@ -90,6 +97,14 @@ class Raid {
 
 	public function setHorarios($horarios) {
 		$this->horarios = $horarios;
+	}
+	
+	public function getMembers() {
+		return $this->members;
+	}
+
+	public function setMembers($members) {
+		$this->members = $members;
 	}
 }
 ?>
