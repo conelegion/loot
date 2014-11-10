@@ -1,4 +1,5 @@
 <?php
+require 'bootstrap.php';
 use Doctrine\Common\Collections\ArrayCollection;
 /**
  * User
@@ -6,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @Entity
  * @Table(name="user")
  */
-class User {
+class Usuario {
 	
 	public function __construct() {
 		$this->chars = new ArrayCollection();
@@ -103,5 +104,27 @@ class User {
 	public function setChars($chars) {
 		$this->chars = $chars;
 	}
+	
+	public function logar($usuario, $senha) {
+		require_once 'app/models/DAO/UserDAO.php';
+		
+		$dao = new UserDAO();
+		$user = $dao->logar($usuario, $senha);
+		
+		if($user) {
+			$_SESSION['usuario'] = $user;
+			
+			echo "sucesso";
+		} else {
+			echo "falha";
+		}
+	}
+	
+	function deslogar() {
+		session_regenerate_id(true);
+		session_unset();
+		session_destroy();
+	}
+	
 }
 ?>

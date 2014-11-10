@@ -11,8 +11,8 @@ body {
 	background-repeat: no-repeat;
 	background-position: top center;
 	background-attachment: scroll;
-	background-image: url("/loot/img/background.jpg");
-	font: 14px base02; 
+	/*background-image: url("/loot/img/background.jpg");*/
+	/*font: 14px base02;*/ 
 	
 	margin: 0;
 	padding:0;
@@ -72,17 +72,17 @@ body {
 	border-color: #a60303 !important;
 }
 
-.menu{list-style:none; border:1px solid #c0c0c0; background-color: #236084; float:left; padding-left: 0px; width: 100%; margin-top: 1px;}
+.menu{list-style:none; border:0px solid #a60303; background-color: #000; float:left; padding-left: 0px; width:100%; margin-top: 1px;}
 	
-.menu li{position:relative; float:left; border-right:1px solid #c0c0c0; }
+.menu li{position:relative; float:left; border-right:0px solid #a60303; }
 
-.menu li a{text-decoration:none; padding:5px 10px; display:block; color: #fff;}
+.menu li a{text-decoration:none; padding:4px 10px; display:block; color: #ff6600; text-align: left;}
 
-.menu li a:hover{background:#fff; color:#236084; -moz-box-shadow:0 3px 10px 0 #CCC; -webkit-box-shadow:0 3px 10px 0 #ccc; text-shadow:0px 0px 5px #fff; }
+.menu li a:hover{background:#191919; color:#a60303; -moz-box-shadow:0 3px 10px 0 #000; -webkit-box-shadow:0 3px 10px 0 #000; text-shadow:0px 0px 5px #000; }
 
-.menu li ul{position:absolute; top:12px; left:0; background-color:#fff; display:none; padding-left: 0px; }
+.menu li ul{position:absolute; top:10px; left:0; background-color:#000; display:none; padding-left: 0px; }
 
 .menu li:hover ul, .menu li.over ul{display:block;}
 
-.menu li ul li{background-color: #236084; border:1px solid #c0c0c0; display:block; width:150px;}
+.menu li ul li{background-color: #000; border:1px solid #000; display:block; width:150px;}
 

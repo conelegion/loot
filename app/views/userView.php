@@ -33,29 +33,14 @@
 </head>
 <body>
 	<div id="wrapper" class="pure-u-5-8">
-		<div id="header"><img src="/loot/img/cone-legion2.png"></div>
+		<div id="header"><?php include 'app/views/header.php';?></div>
 		<div id="content">
 			<br />
 			<br />
+			<h1>Página principal</h1>
 			<br />
 			<br />
-			<div class="tudo pure-g align-center">
-				<div class="pure-u-1-3">
-					<h1>Acessar o sistema</h1>
-					<form class="pure-form form-login">
-						<div class="pure-group pure-input-1">
-							<input id="txt-nome" class="pure-input-1 align-center" type="text" placeholder="User" /> 
-							<br />
-							<input id="txt-senha" class="pure-input-1 align-center" type="password" placeholder="Password" />
-						</div>
-						<br />
-						<button type="submit" id="btn-logar" class="pure-button pure-button-primary">Entrar</button>
-						<br /> <br /> <label id="resposta"></label>
-
-					</form>
-				</div>
-			</div>
-
+			
 		</div>
 		<div id="footer">
 			<?php include 'app/views/footer.php';?>
