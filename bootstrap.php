@@ -15,10 +15,6 @@ require_once "app/models/Raid.php";
 require_once "app/models/Horario.php";
 require_once "app/models/Character.php";
 
-require_once "app/models/teste.php";
-
 // o Doctrine utiliza namespaces em sua estrutura, por isto estes uses 
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
-
-

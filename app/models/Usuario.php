@@ -1,5 +1,6 @@
 <?php
-require 'bootstrap.php';
+require_once 'app/models/DAO/UsuarioDAO.php';
+
 use Doctrine\Common\Collections\ArrayCollection;
 /**
  * User
@@ -11,6 +12,7 @@ class Usuario {
 	
 	public function __construct() {
 		$this->chars = new ArrayCollection();
+		$this->ativo = true;
 	}
 	
 	 /**
@@ -105,26 +107,66 @@ class Usuario {
 		$this->chars = $chars;
 	}
 	
-	public function logar($usuario, $senha) {
-		require_once 'app/models/DAO/UserDAO.php';
-		
-		$dao = new UserDAO();
+	public function logar($usuario, $senha) {		
+		$dao = new UsuarioDAO();
 		$user = $dao->logar($usuario, $senha);
 		
 		if($user) {
 			$_SESSION['usuario'] = $user;
 			
-			echo "sucesso";
+			return true;
 		} else {
-			echo "falha";
+			return false;
 		}
+	}
+	
+	function insert() {
+		$dao = new UsuarioDAO();
+
+		return $dao->insert($this);
+	}
+	
+	function update() {
+		$dao = new UsuarioDAO();
+	
+		return $dao->update($this);
+	}
+	
+	function delete() {
+		$dao = new UsuarioDAO();
+		
+		return $dao->delete($this);
+	}
+	
+	function getAll() {
+		$dao = new UsuarioDAO();
+		
+		$users = $dao->getAll();
+		$usuarios = array();
+		
+		foreach ($users as $user) {
+			$usuario['id'] = $user->getId();
+			$usuario['nome'] = $user->getNome();
+			$usuario['mail'] = $user->getMail();
+			$usuario['nick'] = $user->getNick();
+			$usuario['senha'] = $user->getSenha();
+			$usuario['ativo'] = $user->getAtivo();
+			
+			$usuarios[] = $usuario;
+		}
+		
+		return $usuarios;
+	}
+	
+	function getById($id) {
+		$dao = new UsuarioDAO();
+		
+		return $dao->getById($id);
 	}
 	
 	function deslogar() {
 		session_regenerate_id(true);
 		session_unset();
 		session_destroy();
-	}
-	
+	}	
 }
-?>

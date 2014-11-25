@@ -1,16 +1,13 @@
 <?php
+require_once 'bootstrap.php';
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
-
 class Doctrine {
-
     /**
      * @var EntityManager Doctrine Entity Manager
      */
     private static $entityManager = NULL;
-
     public function __construct() {
-        require_once 'bootstrap.php';
 
         //onde irão ficar as entidades do projeto? Defina o caminho aqui
         $entidades = array("app/models/");
@@ -38,5 +35,4 @@ class Doctrine {
     public static function getEntityManager() {
         return self::$entityManager;
     }
-
 }

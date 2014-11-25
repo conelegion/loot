@@ -21,7 +21,7 @@ class System extends Route {
 	}
 
 	private function setController() {
-		$this->_controller = $this->_explode[0];
+		$this->_controller = $this->_explode[0]."Controller";
 	}
 
 	private function setAction() {
@@ -29,8 +29,8 @@ class System extends Route {
 	}
 	
 	function run() {
-		if(file_exists(CONTROLLERS.$this->_controller.'Controller.php')) {
-			require_once(CONTROLLERS.$this->_controller.'Controller.php');
+		if(file_exists(CONTROLLERS.$this->_controller.'.php')) {
+			require_once(CONTROLLERS.$this->_controller.'.php');
 			
 			if(class_exists($this->_controller)) {
 				$controller = new $this->_controller();
@@ -49,4 +49,3 @@ class System extends Route {
 		}
 	}
 }
-?>

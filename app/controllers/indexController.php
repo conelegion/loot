@@ -1,8 +1,6 @@
 <?php
-class index extends Controller {
+class indexController extends Controller {
 	function index_action() {
 		$this->View('index');
 	}
 }
-
-?>

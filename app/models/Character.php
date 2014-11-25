@@ -35,7 +35,7 @@ class Character {
     private $ativo;
     
     /**
-     * @ManyToOne(targetEntity="User", cascade={"persist"})
+     * @ManyToOne(targetEntity="Usuario", cascade={"persist"})
      * @JoinColumn(name="user_id_user", referencedColumnName="id_user")
      */
     private $user;

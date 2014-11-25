@@ -8,10 +8,9 @@
 <link rel="stylesheet" href="/loot/include/css/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="/loot/include/css/style.css">
 <script src="/loot/include/js/jquery.min.js"></script>
-
 <script type="text/javascript">
  $(document).ready(function() {
-    $('#resposta').hide();
+   
 
     $('#btn-logar').on('click', function() {
         var user = $('#txt-nome').val();
@@ -19,10 +18,20 @@
         
     	$.ajax({
 			type: "post",
-			url: "/loot/user/logar",
+			url: "/loot/usuario/logar",
 			data: {pass: pass, user: user},
 			success: function(resposta) {	
-				alert(resposta);	
+				if(resposta == 'sucesso') {
+					setTimeout(function() {  
+			        	window.location.href = "/loot/usuario";
+				    }, 3000);
+				} else {
+					alert(resposta);
+					$('#resposta').text("Usuario e/ou senha invalidos.").show();
+					setTimeout(function() {  
+						 $('#resposta').hide();
+				    }, 2000);
+				}
 			}
 		});
    
@@ -33,7 +42,7 @@
 </head>
 <body>
 	<div id="wrapper" class="pure-u-5-8">
-		<div id="header"><img src="/loot/img/cone-legion2.png"></div>
+		<div id="header"><!-- <img src="/loot/img/cone-legion2.png"> --></div>
 		<div id="content">
 			<br />
 			<br />
@@ -50,7 +59,8 @@
 						</div>
 						<br />
 						<button type="submit" id="btn-logar" class="pure-button pure-button-primary">Entrar</button>
-						<br /> <br /> <label id="resposta"></label>
+						<br /> <br /> 
+						<p id="resposta"></p>
 
 					</form>
 				</div>
@@ -58,7 +68,7 @@
 
 		</div>
 		<div id="footer">
-			<?php include 'app/views/footer.php';?>
+			<?php include 'app/views/footer.html';?>
 		</div>
 	</div>
 </body>

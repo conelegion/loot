@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title></title>
-</head>
-<body>
-
 <?php
 // adicionaCategoria.php
 
@@ -18,11 +10,18 @@ require_once 'bootstrap.php';
  * 
  *  instanciando a entidade Categoria
  */
-$user = new User;
+$user = new Usuario;
 $char = new Character;
 $spec = new Spec;
 $race = new Race;
 $raid = new Raid;
+
+$race->setNome('teste');
+
+$entityManager->persist($spec);
+
+
+
 /**
  * 
  * utilizando a função setNome 
@@ -39,15 +38,6 @@ foreach ($classes as $classe) {
 }
  */
 
-$raid = $entityManager->getRepository('Raid')->findOneBy(array('nome' => 'teste'));
-
-
-
-
-foreach ($raid->getMembers() as $member) {
-	echo $member->getNome();
-}
-
 
 //$user = $entityManager->getRepository('User')->findOneBy(array('nome' => 'Guilherme'));
 //$spec = $entityManager->getRepository('Spec')->findOneBy(array('nome' => 'Survival'));
@@ -62,6 +52,32 @@ foreach ($raid->getMembers() as $member) {
 //$char->setUser($user);
 
 //$entityManager->persist($char);
+
+/* $usuario = new Usuario();
+
+$usuario->setNome('nome');
+$usuario->setMail('mail');
+$usuario->setNick('nick');
+$usuario->setSenha('senha');
+
+Doctrine::getEntityManager()->persist($usuario);
+ */
+
+/* $classes = $entityManager->getRepository('Classe')->findAll();
+echo "<h1>Classes  e Specs</h1>";
+foreach ($classes as $classe) {
+	echo "<h3 style='margin-bottom: 0px;'>".$classe->getNome()."</h3>";
+	foreach ($classe->getSpecs() as $spec) {
+		echo "&nbsp;&nbsp;►&nbsp;".$spec->getNome()." (".$spec->getRole()->getNome()." - ".$spec->getAtributo()->getNome().")<br />";
+	}
+} */
+
+/* $usuario = new Usuario();
+$usuario->setNome('nome');
+$usuario->setMail('mail');
+$usuario->setNick('nick');
+$usuario->setSenha('senha');
+$entityManager->persist($usuario); */
 
 //$char->setUser($user);
 //$char->setNome('Zódd');
@@ -87,7 +103,7 @@ foreach ($raid->getMembers() as $member) {
  * pelo persist e executá-las no banco de dados. 
  * Só a apartir daqui o banco é alterado de alguma forma.
  */
-$entityManager->flush();
+
 ?>
 </body>
 </html>

@@ -5,7 +5,7 @@ font-family: base02;
 
 html,
 body {
-	background-color: #fff;
+	background-color: #000000;
 	background-repeat: no-repeat;
 	background-position: top center;
 	background-attachment: scroll;
@@ -17,6 +17,18 @@ body {
 	text-align: center;
 	height:100%;
 }
+
+table {
+	margin: 0 auto;
+	width: 95%;
+	color: #000;
+}
+
+.btn-delete, .btn-edit {
+	cursor: pointer;
+	width: 14px;
+}
+
 #wrapper {
 	color: #fff;
 	min-height:100%;
@@ -28,7 +40,7 @@ body {
 #header {
 	height: 160px;
 	padding:0px;
-	background:#000;
+	background:#a60303;
 }
 
 #header img {
@@ -54,24 +66,21 @@ body {
 	background: #0e0e0e;
 }
 
-#footer > span {
-	display: none;	
-}
-
 .align-center {
 	text-align: center;
 }
 
-#btn-logar {
-	font: 14px arial;
+#btn-logar, .pure-button {
+	font: 14px helvetica;
 	font-weight: bold;
 
 	background: #fff;
 	color: #000;
 }
 
-.pure-input-1 {
+.pure-input-1,  .pure-input-1-2{
 	border-color: #a60303 !important;
+	text-align: center;
 }
 
 #resposta {
@@ -82,9 +91,9 @@ body {
 	
 .menu li{position:relative; float:left; border-right:0px solid #a60303; }
 
-.menu li a{text-decoration:none; padding:4px 10px; display:block; color: #fff; text-align: left;}
+.menu li a{text-decoration:none; padding:4px 10px; display:block; color: #fff; text-align: left; font: 14px arial;}
 
-.menu li a:hover{background:#191919; color:#fff; -moz-box-shadow:0 3px 10px 0 #000; -webkit-box-shadow:0 3px 10px 0 #000; text-shadow:0px 0px 5px #000; }
+.menu li a:hover{background:#191919; color:#ff6600; -moz-box-shadow:0 3px 10px 0 #000; -webkit-box-shadow:0 3px 10px 0 #000; text-shadow:0px 0px 5px #000; }
 
 .menu li ul{position:absolute; top:10px; left:0; background-color:#000; display:none; padding-left: 0px; }
 
@@ -92,19 +101,6 @@ body {
 
 .menu li ul li{background-color: #000; border:1px solid #000; display:block; width:150px;}
 
-
-
-.users_table {
-	margin: 0 auto;
-	width: 80%;
-}
-
-.users_table thead tr th:last-child {
-	background-color: #191919;
-	border-right: 1px #191919 solid;
-	border-top: 1px #191919 solid;
-}
-
-.form-center {
-	
+.pure-group input {
+	margin: 0 auto !important;
 }

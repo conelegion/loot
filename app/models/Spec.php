@@ -1,12 +1,14 @@
 <?php
+require_once 'app/models/DAO/SpecDAO.php';
+
 /**
- * Produto
+ * Spec
  * 
  * @Entity
  * @Table(name="spec")
  */
-class Spec
-{
+class Spec {
+	
     /**
      * @Id
      * @Column(type="integer", name="id_spec")
@@ -74,5 +76,23 @@ class Spec
 
 	public function setRole($role) {
 		$this->role = $role;
+	}
+	
+	static public function getAll() {
+
+		$dados = SpecDAO::getAll();
+		$specs = array();
+		
+		foreach ($dados as $value) {
+			$spec['id'] = $value->getId();
+			$spec['nome'] = $value->getNome();
+			$spec['class'] = $value->getClass()->getNome();
+			$spec['atributo'] = $value->getAtributo()->getNome();
+			$spec['role'] = $value->getRole()->getNome();
+				
+			$specs[] = $spec;
+		}
+		
+		return $specs;
 	}
 }

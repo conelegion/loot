@@ -1,4 +1,5 @@
 <?php
+require_once 'app/models/DAO/ClasseDAO.php';
 use Doctrine\Common\Collections\ArrayCollection;
 /**
  *
@@ -49,6 +50,28 @@ class Classe {
 
 	public function setNome($nome) {
 		$this->nome = $nome;
+	}
+	
+	static public function getAll() {
+		$dados = ClasseDAO::getAll();
+		$classes = array();
+	
+		foreach ($dados as $value) {
+			$classe['id'] = $value->getId();
+			$classe['nome'] = $value->getNome();
+			$classe['specs'] = array();
+			
+			foreach ($value->getSpecs() as $value) {
+				$spec['id'] = $value->getId();
+				$spec['nome'] = $value->getNome();
+				
+				$classe['specs'][] = $spec;
+			}
+	
+			$classes[] = $classe;
+		}
+	
+		return $classes;
 	}
 }
 ?>
