@@ -1,5 +1,7 @@
 <?php
+require_once 'app/models/DAO/RaidDAO.php';
 use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Raid
  * 
@@ -33,12 +35,6 @@ class Raid {
      * @Column(type="boolean", name="ativo")
      */
     private $ativo;
-    
-    /**
-     * @OneToOne(targetEntity="User", cascade={"persist"})
-     * @JoinColumn(name="user_id_user", referencedColumnName="id_user")
-     */
-    private $lider;
      
     /**
      * @OneToMany(targetEntity="Horario", mappedBy="raid")
@@ -67,10 +63,6 @@ class Raid {
 		return $this->ativo;
 	}
 
-	public function getLider() {
-		return $this->lider;
-	}
-
 	public function setId($id) {
 		$this->id = $id;
 	}
@@ -85,10 +77,6 @@ class Raid {
 
 	public function setAtivo($ativo) {
 		$this->ativo = $ativo;
-	}
-
-	public function setLider($lider) {
-		$this->lider = $lider;
 	}
 	
 	public function getHorarios() {
@@ -106,5 +94,10 @@ class Raid {
 	public function setMembers($members) {
 		$this->members = $members;
 	}
+	
+	static function getById($id) {
+		$dao = new RaidDAO();
+	
+		return $dao->getById($id);
+	}	
 }
-?>

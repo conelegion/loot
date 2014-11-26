@@ -6,4 +6,94 @@ class CharacterController extends Controller {
 		else
 			$this->View('./character/cadastrar');
 	}
+	
+	function editar() {
+		if(empty($_SESSION['usuario']))
+			header("Location: /loot");
+		else
+			$this->View('./character/editar');
+	}
+	
+	function insert() {
+		if(empty($_SESSION['usuario']))
+			header("Location: /loot");
+		else {
+			$branco = false;
+			foreach ($_POST as $campo) {
+				if(empty($campo)) {
+					$branco = true;
+					break;
+				}
+			}
+				
+			if($branco) {
+				echo "empty";
+			} else {
+				$char = new Character();
+				
+				$nome = $_POST['txt-nome'];
+				$spec = Spec::getById($_POST['txt-spec']);
+				$race = Race::getById($_POST['txt-race']);
+				$user = Usuario::getById($_POST['txt-user']);
+				$raid = Raid::getById('0');
+				
+				$char->setRaid($raid);
+				$char->setUser($user);
+				$char->setNome($nome);
+				$char->setRace($race);
+				$char->setSpec($spec);
+				
+				echo $char->insert();
+			}
+		}
+	}
+	
+	function delete() {
+		if(empty($_SESSION['usuario']))
+			header("Location: /loot");
+		else {
+			$id = $_POST['id'];
+				
+			$char = Character::getById($id);
+				
+			$char->delete();
+		}
+	}
+	
+	function getById() {
+		if(empty($_SESSION['usuario']))
+			header("Location: /loot");
+	
+		$id = $_POST['id'];
+			
+		$personagem = Character::getById($id);
+	
+		$char['id'] = $personagem->getId();
+		$char['nome'] = $personagem->getNome();
+		
+		$char['usuario'] = $personagem->getUser()->getNome();
+		
+		$char['classe'] = $personagem->getSpec()->getClass()->getNome();
+		$char['idClasse'] = $personagem->getSpec()->getClass()->getId();
+		
+		$char['spec'] = $personagem->getSpec()->getNome();
+		$char['idSpec'] = $personagem->getSpec()->getId();
+		
+		$char['race'] = $personagem->getRace()->getNome();
+		$char['idRace'] = $personagem->getRace()->getId();
+		
+		$char['ativo'] = $personagem->getAtivo();
+
+		echo json_encode($char);
+	}
+	
+	function getAll() {
+		if(empty($_SESSION['usuario']))
+			header("Location: /loot");
+		else
+			
+		$usuarios = Character::getAll();
+			
+		echo json_encode($usuarios);
+	}
 }

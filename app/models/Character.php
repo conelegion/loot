@@ -1,4 +1,5 @@
 <?php
+require_once 'app/models/DAO/CharacterDAO.php';
 /**
  * Character
  * 
@@ -6,6 +7,13 @@
  * @Table(name="personagem")
  */
 class Character {
+	
+	function __construct() {
+		$this->ativo = true;
+		$this->loots = 0;
+		$this->participacoes = 0;
+	}
+	
     /**
      * @Id
      * @Column(type="integer", name="id_character")
@@ -126,6 +134,51 @@ class Character {
 
 	public function setLoots($loots) {
 		$this->loots = $loots;
+	}
+	
+	function insert() {
+		$dao = new CharacterDAO();
+	
+		return $dao->insert($this);
+	}
+	
+	function delete() {
+		$dao = new CharacterDAO();
+	
+		return $dao->delete($this);
+	}
+	
+	static function getById($id) {
+		$dao = new CharacterDAO();
+	
+		return $dao->getById($id);
+	}
+	
+	static function getAll() {
+		$dao = new CharacterDAO();
+	
+		$dados = $dao->getAll();
+		$chars = array();
+	
+		foreach ($dados as $value) {
+			$char['id'] = $value->getId();
+			$char['nome'] = $value->getNome();
+			
+			$char['usuario'] = $value->getUser()->getNome();
+			
+			$char['classe'] = $value->getSpec()->getClass()->getNome();
+			
+			$char['spec'] = $value->getSpec()->getNome();
+			
+			$char['race'] = $value->getRace()->getNome();
+			
+			
+			$char['ativo'] = $value->getAtivo();
+				
+			$chars[] = $char;
+		}
+	
+		return $chars;
 	}
 }
 

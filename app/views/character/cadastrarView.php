@@ -12,46 +12,97 @@
 <script type="text/javascript">
  $(document).ready(function() {
 	buscarUsuarios();
+	buscarRacas();
+	buscarClasses();
 
 	function buscarUsuarios() {    
-		$('.resultados').remove();
+		$('.user-resultados').remove();
     	$.ajax({
 			type: "post",
 			url: "/loot/usuario/getAll",
 			dataType: "json",
 			success: function(resposta) {
 				$.each(resposta, function(k, v) {
-					$("#txt-user").append("<option class='resultados' value=" + v.id + ">" + v.nome + "</option>");
+					$("#txt-user").append("<option class='user-resultados' value=" + v.id + ">" + v.nome + "</option>");
 				});
 			}
 		});
     };
 
+    function buscarRacas() {    
+		$('.race-resultados').remove();
+    	$.ajax({
+			type: "post",
+			url: "/loot/race/getAll",
+			dataType: "json",
+			success: function(resposta) {
+				$.each(resposta, function(k, v) {
+					$("#txt-race").append("<option class='race-resultados' value=" + v.id + ">" + v.nome + "</option>");
+				});
+			}
+		});
+    };
 
+    function buscarClasses() {    
+		$('.class-resultados').remove();
+    	$.ajax({
+    		assync: true,
+			type: "post",
+			url: "/loot/classe/getAll",
+			dataType: "json",
+			success: function(resposta) {
+				$.each(resposta, function(k, v) {
+					$("#txt-classe").append("<option class='class-resultados' value=" + v.id + ">" + v.nome + "</option>");
+				});
+				buscarSpecs();
+			}
+		});
+    };
 
-	 $('#btn-cad').on('click', function() {
-		 $('#btn-cad').hide();    
-	    	$.ajax({
-				type: "post",
-				url: "/loot/usuario/insert",
-				data: $("#form").serialize(),
-				success: function(resposta) {	
-					if(resposta == 'empty') {
-						$('#resposta').text("É necessário preencher todos os campos!").show();
-						$('#btn-cad').show(); 
-						setTimeout(function() {  
-							 $('#resposta').hide();
-					    }, 2000);	
-					} else if(resposta == "") {
-						$('#resposta').text("Usuário cadastrado com sucesso!").show();
-						setTimeout(function() {  
-							window.location.href = "/loot/usuario/";
-					    }, 2000);	
-					}
+    function buscarSpecs() {  
+    	var classe = $('#txt-classe').val();  
+		$('.spec-resultados').remove();
+    	$.ajax({
+			type: "post",
+			url: "/loot/spec/getByClasse",
+			dataType: "json",
+			data: {txt_classe : classe},
+			success: function(resposta) {
+				$.each(resposta, function(k, v) {
+					$("#txt-spec").append("<option class='spec-resultados' value=" + v.id + ">" + v.nome + "</option>");
+				});
+			}
+		});
+    };
+
+    $('#txt-classe').on('change', function() {
+    	buscarSpecs();
+    });
+
+	$('#btn-cad').on('click', function() {
+		$('#btn-cad').hide();    
+    	
+    	$.ajax({
+			type: "post",
+			url: "/loot/character/insert",
+			data: $("#form").serialize(),
+			success: function(resposta) {	
+				if(resposta == 'empty') {
+					$('#resposta').text("É necessário preencher todos os campos!").show();
+					$('#btn-cad').show(); 
+					setTimeout(function() {  
+						 $('#resposta').hide();
+				    }, 2000);	
+				} else if(resposta == "") {
+					$('#resposta').text("Char cadastrado com sucesso!").show();
+					setTimeout(function() {  
+						window.location.href = "/loot/character/editar";
+				    }, 2000);	
 				}
-			});
-	        return false;
-	    });
+			}
+		});
+	    return false;
+	});
    
  });
  </script>
@@ -65,40 +116,29 @@
 			<form class="pure-form pure-form-aligned align-center" id="form">
 				    <fieldset>
 				    	<div class="pure-control-group">
-				    		<label>Usuário</label>
-				    		<select id="txt-user"></select>
-				    	</div>
-				    	
-				    	<div class="pure-control-group">
 				    		<label>Nome</label>
-				        	<input type="text" class="pure-input-1-2 txt-nome" name="txt-nome" placeholder="Nome">
+				        	<input type="text" class="pure-input-1-3 txt-nome" name="txt-nome" placeholder="Nome">
 				        </div>
-
-				        <div class="pure-control-group">
-				        	<label>E-mail</label>
-				        	<input type="text" class="pure-input-1-2 txt-email" name="txt-email" placeholder="E-mail">
-				        </div>
-
-				        <div class="pure-control-group">
-				        	<label>Senha</label>
-				        	<input type="text" class="pure-input-1-2 txt-nick" name="txt-nick" placeholder="Bnet Name">
-				        </div>			
-					    <div class="pure-control-group">
-							<label>Senha</label>
-					        <input type="password" class="pure-input-1-2 txt-senha" name="txt-senha" placeholder="Senha">
-					    </div>
-						<div class="pure-control-group">
-					        <label>Ativo</label>
-					        <select name="txt-ativo" class="pure-input-1-12 txt-ativo" id="txt-ativo">
-								<option value="1">Sim</option>
-								<option value="-1">Não</option>
-					        </select>
-					    </div>
+				    	<div class="pure-control-group">
+				    		<label>Usuário</label>
+				    		<select class="pure-input-1-3" name="txt-user" id="txt-user"></select>
+				    	</div>
+				    	<div class="pure-control-group">
+				    		<label>Raça</label>
+				    		<select id="txt-race" name="txt-race" class="pure-input-1-3"></select>
+				    	</div>
+				    	<div class="pure-control-group">
+				    		<label>Classe</label>
+				    		<select id="txt-classe" class="pure-input-1-3"></select>
+				    	</div>
+				    	<div class="pure-control-group">
+				    		<label>Spec</label>
+				    		<select id="txt-spec" name="txt-spec" class="pure-input-1-3"></select>
+				    	</div>
 
 				    </fieldset>
 					<br />
-					<input type="hidden" class="pure-input-1-2 txt-idUser" name="txt-id">
-				    <button type="button" id="btn-edit" class="pure-button pure-input-1-6 pure-button-primary">Editar</button>&nbsp;&nbsp;<button type="button" id="btn-cancel" class="pure-button pure-input-1-6 pure-button-primary">Voltar</button>
+				    <button type="button" id="btn-cad" class="pure-button pure-input-1-6 pure-button-primary">Cadastrar</button>
 				    <br /> <br /> 
 					<p id="resposta"></p>
 				</form>

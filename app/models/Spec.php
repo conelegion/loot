@@ -95,4 +95,24 @@ class Spec {
 		
 		return $specs;
 	}
+	
+	static public function getByClasse($classe) {
+	
+		$dados = SpecDAO::getByClasse($classe);
+		$specs = array();
+	
+		foreach ($dados as $value) {
+			$spec['id'] = $value->getId();
+			$spec['nome'] = $value->getNome();
+	
+			$specs[] = $spec;
+		}
+		return $specs;
+	}
+	
+	static function getById($id) {
+		$dao = new SpecDAO();
+	
+		return $dao->getById($id);
+	}
 }

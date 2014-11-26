@@ -158,7 +158,7 @@ class Usuario {
 		return $usuarios;
 	}
 	
-	function getById($id) {
+	static function getById($id) {
 		$dao = new UsuarioDAO();
 		
 		return $dao->getById($id);

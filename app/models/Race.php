@@ -1,4 +1,5 @@
 <?php
+require_once 'app/models/DAO/RaceDAO.php';
 /**
  *
  * @Entity
@@ -31,6 +32,26 @@ class Race {
 
 	public function setNome($nome) {
 		$this->nome = $nome;
+	}
+	
+	static public function getAll() {
+		$dados = RaceDAO::getAll();
+		$races = array();
+	
+		foreach ($dados as $value) {
+			$race['id'] = $value->getId();
+			$race['nome'] = $value->getNome();
+	
+			$races[] = $race;
+		}
+	
+		return $races;
+	}
+	
+	static function getById($id) {
+		$dao = new RaceDAO();
+	
+		return $dao->getById($id);
 	}
 }
 ?>
