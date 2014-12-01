@@ -170,7 +170,7 @@ class Character {
 			$char['id'] = $value->getId();
 			$char['nome'] = $value->getNome();
 			
-			$char['usuario'] = $value->getUser()->getNome();
+			$char['usuario'] = $value->getUser()->getNick();
 			
 			$char['classe'] = $value->getSpec()->getClass()->getNome();
 			
@@ -197,15 +197,17 @@ class Character {
 			$char['id'] = $value->getId();
 			$char['nome'] = $value->getNome();
 				
-			$char['usuario'] = $value->getUser()->getNome();
+			$char['usuario'] = $value->getUser()->getNick();
 				
 			$char['classe'] = $value->getSpec()->getClass()->getNome();
 				
 			$char['spec'] = $value->getSpec()->getNome();
-				
+			$char['role'] = $value->getSpec()->getRole()->getNome();
 			$char['race'] = $value->getRace()->getNome();
-				
-				
+			
+			$char['participacoes'] = $value->getParticipacoes();
+			$char['loots'] = $value->getLoots();
+			
 			$char['ativo'] = $value->getAtivo();
 	
 			$chars[] = $char;
@@ -224,7 +226,7 @@ class Character {
 			$char['id'] = $value->getId();
 			$char['nome'] = $value->getNome();
 	
-			$char['usuario'] = $value->getUser()->getNome();
+			$char['usuario'] = $value->getUser()->getNick();
 	
 			$char['classe'] = $value->getSpec()->getClass()->getNome();
 	

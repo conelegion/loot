@@ -12,6 +12,8 @@ body {
 	/*background-image: url("/loot/img/background.jpg");*/
 	font: 14px arial;
 	
+	color: #ff6600;
+	
 	margin: 0;
 	padding:0;
 	text-align: center;
@@ -30,7 +32,7 @@ table {
 }
 
 #wrapper {
-	color: #fff;
+	color: #ff6600;
 	min-height:100%;
 	position:relative;
 
@@ -74,7 +76,7 @@ table {
 	font: 14px helvetica;
 	font-weight: bold;
 
-	background: #fff;
+	background: #ff6600;
 	color: #000;
 }
 
@@ -87,11 +89,28 @@ table {
 	color: #ff6600;
 }
 
+table {
+	border-color: #ff6600 !important;
+}
+
+td, .pure-table-odd td {
+	border-bottom: 1px solid;
+	border-color: #ff6600 !important;
+	background-color: #000;
+	color: #ff6600;
+}
+
+th{
+	text-align: center;
+	background-color: #ff6600;
+	border-color: #ff6600 !important;
+}
+
 .menu{list-style:none; border:0px solid #a60303; background-color: #000; float:left; padding-left: 0px; width:100%; margin-top: 1px;}
 	
 .menu li{position:relative; float:left; border-right:0px solid #a60303; }
 
-.menu li a{text-decoration:none; padding:4px 10px; display:block; color: #fff; text-align: left; font: 14px arial;}
+.menu li a{text-decoration:none; padding:4px 10px; display:block; color: #ff6600; text-align: left; font: 14px arial;}
 
 .menu li a:hover{background:#191919; color:#ff6600; -moz-box-shadow:0 3px 10px 0 #000; -webkit-box-shadow:0 3px 10px 0 #000; text-shadow:0px 0px 5px #000; }
 

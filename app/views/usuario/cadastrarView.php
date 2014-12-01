@@ -44,20 +44,33 @@
 		<div id="content">
 			<h1>Cadastrar usuario</h1>
 			<br />
-			<form class="pure-form align-center" id="form">
-			    <fieldset class="pure-group">
-			        <input type="text" class="pure-input-1-2 txt-nome" name="txt-nome" placeholder="Nome">
-			        <input type="text" class="pure-input-1-2 txt-email" name="txt-email" placeholder="E-mail">
-			        <input type="text" class="pure-input-1-2 txt-nick" name="txt-nick" placeholder="Bnet Name">
-			    </fieldset>
+			<form class="pure-form pure-form-aligned align-center" id="form">
+			    <fieldset>
+			    	<div class="pure-control-group">
+				    	<label>Nome</label>
+				        <input type="text" class="pure-input-1-2 txt-nome" name="txt-nome" placeholder="Nome">
+				     </div>
+			       
+			       	<div class="pure-control-group">
+				    	<label>E-mail</label>
+			        	<input type="text" class="pure-input-1-2 txt-email" name="txt-email" placeholder="E-mail">
+			        </div>
+			        
+			        <div class="pure-control-group">
+				    	<label>Nick</label>
+			        	<input type="text" class="pure-input-1-2 txt-nick" name="txt-nick" placeholder="Bnet Name">
+			        </div>
 			
-			    <fieldset class="pure-group">
-			        <input type="password" class="pure-input-1-2 txt-senha" name="txt-senha" placeholder="Senha">
-			    </fieldset>
-				<br />
-			    <button type="button" id="btn-cad" class="pure-button pure-input-1-6 pure-button-primary">Cadastrar</button>
-			    <br /> <br /> 
-				<p id="resposta"></p>
+					<div class="pure-control-group">
+				    	<label>Senha</label>
+			        	<input type="password" class="pure-input-1-2 txt-senha" name="txt-senha" placeholder="Senha">
+			        </div>
+
+					<br />
+				    <button type="button" id="btn-cad" class="pure-button pure-input-1-6 pure-button-primary">Cadastrar</button>
+				    <br /> <br /> 
+					<p id="resposta"></p>
+				</fieldset>
 			</form>
 		</div>
 			

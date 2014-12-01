@@ -107,6 +107,32 @@ class CharacterController extends Controller {
 		}
 	}
 	
+	function addLoot() {
+		if(empty($_SESSION['usuario']))
+			header("Location: /loot");
+		else {
+			$id = $_POST['id'];
+	
+			$char = Character::getById($id);
+			$char->setLoots($char->getLoots() + 1);
+	
+			echo $char->update();
+		}
+	}
+	
+	function removeLoot() {
+		if(empty($_SESSION['usuario']))
+			header("Location: /loot");
+		else {
+			$id = $_POST['id'];
+	
+			$char = Character::getById($id);
+			$char->setLoots($char->getLoots() - 1);
+	
+			echo $char->update();
+		}
+	}
+	
 	function delete() {
 		if(empty($_SESSION['usuario']))
 			header("Location: /loot");
@@ -149,7 +175,6 @@ class CharacterController extends Controller {
 	function getByRaid() {
 		if(empty($_SESSION['usuario']))
 			header("Location: /loot");
-		else
 			
 		$usuarios = Character::getByRaid();
 			
@@ -159,10 +184,10 @@ class CharacterController extends Controller {
 	function getFreeChars() {
 		if(empty($_SESSION['usuario']))
 			header("Location: /loot");
-		else
-				
-			$usuarios = Character::getFreeChars();
+	
 			
+		$usuarios = Character::getFreeChars();
+		
 		echo json_encode($usuarios);
 	}
 	

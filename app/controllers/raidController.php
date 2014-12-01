@@ -6,5 +6,4 @@ class RaidController extends Controller {
 		else
 			$this->View('./raid/montar');
 	}
-	
 }

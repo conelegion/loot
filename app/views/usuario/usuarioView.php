@@ -37,9 +37,10 @@
 		<div id="content">
 			<br />
 			<br />
-			<h1>Página principal</h1>
+			<h1>Sistema de Loot</h1>
+			<h2>Versão 1.0</h2>
 			<br />
-			<br />
+
 			
 		</div>
 		<div id="footer">

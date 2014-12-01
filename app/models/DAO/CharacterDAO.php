@@ -24,7 +24,7 @@ class CharacterDAO {
 	
 	function getByRaid() {
 		$raid = 1;
-		$query = Doctrine::getEntityManager()->createQuery("SELECT s FROM Character s WHERE s.raid = ".$raid);
+		$query = Doctrine::getEntityManager()->createQuery("SELECT s FROM Character s WHERE s.raid = ".$raid." ORDER BY s.loots ASC");
 		$chars = $query->getResult();
 	
 		return (empty($chars) ? false : $chars);

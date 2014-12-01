@@ -23,7 +23,7 @@
 			dataType: "json",
 			success: function(resposta) {
 				$.each(resposta, function(k, v) {
-					$("#txt-user").append("<option class='user-resultados' value=" + v.id + ">" + v.nome + "</option>");
+					$("#txt-user").append("<option class='user-resultados' value=" + v.id + ">" + v.nick + "</option>");
 				});
 			}
 		});
