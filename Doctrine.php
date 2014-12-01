@@ -9,23 +9,23 @@ class Doctrine {
     private static $entityManager = NULL;
     public function __construct() {
 
-        //onde irÃ£o ficar as entidades do projeto? Defina o caminho aqui
+        //onde irão ficar as entidades do projeto? Defina o caminho aqui
         $entidades = array("app/models/");
         $isDevMode = true;
         
-        // configuraÃ§Ãµes de conexÃ£o. Coloque aqui os seus dados
+        // configurações de conexão. Coloque aqui os seus dados
         $dbParams = array(
         		'driver'   => 'pdo_mysql',
         		'user'     => 'root',
-        		//'host'     => 'localhost:3307',
+        		//'host'   => 'localhost',
         		'password' => '',
         		'dbname'   => 'loot',
         );
         
-        //setando as configuraÃ§Ãµes definidas anteriormente
+        //setando as configurações definidas anteriormente
         $config = Setup::createAnnotationMetadataConfiguration($entidades, $isDevMode);
         
-        //criando o Entity Manager com base nas configuraÃ§Ãµes de dev e banco de dados
+        //criando o Entity Manager com base nas configurações de dev e banco de dados
         self::$entityManager = EntityManager::create($dbParams, $config);
     }
 

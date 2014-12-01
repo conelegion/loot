@@ -24,7 +24,7 @@ table {
 	color: #000;
 }
 
-.btn-delete, .btn-edit {
+.btn-delete, .btn-edit, .btn-insert {
 	cursor: pointer;
 	width: 14px;
 }

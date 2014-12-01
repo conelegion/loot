@@ -142,6 +142,12 @@ class Character {
 		return $dao->insert($this);
 	}
 	
+	function update() {
+		$dao = new CharacterDAO();
+	
+		return $dao->update($this);
+	}
+	
 	function delete() {
 		$dao = new CharacterDAO();
 	
@@ -175,6 +181,60 @@ class Character {
 			
 			$char['ativo'] = $value->getAtivo();
 				
+			$chars[] = $char;
+		}
+	
+		return $chars;
+	}
+	
+	static function getByRaid() {
+		$dao = new CharacterDAO();
+	
+		$dados = $dao->getByRaid();
+		$chars = array();
+	
+		foreach ($dados as $value) {
+			$char['id'] = $value->getId();
+			$char['nome'] = $value->getNome();
+				
+			$char['usuario'] = $value->getUser()->getNome();
+				
+			$char['classe'] = $value->getSpec()->getClass()->getNome();
+				
+			$char['spec'] = $value->getSpec()->getNome();
+				
+			$char['race'] = $value->getRace()->getNome();
+				
+				
+			$char['ativo'] = $value->getAtivo();
+	
+			$chars[] = $char;
+		}
+	
+		return $chars;
+	}
+	
+	static function getFreeChars() {
+		$dao = new CharacterDAO();
+	
+		$dados = $dao->getFreeChars();
+		$chars = array();
+	
+		foreach ($dados as $value) {
+			$char['id'] = $value->getId();
+			$char['nome'] = $value->getNome();
+	
+			$char['usuario'] = $value->getUser()->getNome();
+	
+			$char['classe'] = $value->getSpec()->getClass()->getNome();
+	
+			$char['spec'] = $value->getSpec()->getNome();
+	
+			$char['race'] = $value->getRace()->getNome();
+	
+	
+			$char['ativo'] = $value->getAtivo();
+	
 			$chars[] = $char;
 		}
 	

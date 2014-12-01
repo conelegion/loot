@@ -128,9 +128,9 @@
     $('#btn-edit').on('click', function() {
     	$.ajax({
 			type: "post",
-			url: "/loot/usuario/update",
+			url: "/loot/character/update",
 			data: $("#form").serialize(),
-			success: function(resposta) {	
+			success: function(resposta) {
 				if(resposta != 'empty') {
 					buscarChars();
 					$('.wrap-editar').hide();
@@ -141,6 +141,7 @@
     });
 
     $('#btn-cancel').on('click', function() {
+    	buscarChars();
     	$('.wrap-editar').hide();
     	$('.wrap-lista').fadeIn();
     });
@@ -211,6 +212,13 @@
 				    		<label>Spec</label>
 				    		<select id="txt-spec" name="txt-spec" class="pure-input-1-3"></select>
 				    	</div>
+				    	<div class="pure-control-group">
+					        <label>Ativo</label>
+					        <select name="txt-ativo" class="pure-input-1-3 txt-ativo" id="txt-ativo">
+								<option value="1">Sim</option>
+								<option value="-1">Não</option>
+					        </select>
+					    </div>
 
 				    </fieldset>
 					<br />
