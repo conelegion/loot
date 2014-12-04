@@ -29,6 +29,7 @@ $(document).ready(function() {
 						+ "<td>" + v.classe + "</td>"
 						+ "<td>" + v.spec + "</td>"
 						+ "<td>" + v.role + "</td>"
+						+ "<td>" + v.atributo + "</td>"
 						+ "<td>" + v.loots + "</td>"
 					+ "</tr>");
 				});
@@ -54,6 +55,7 @@ $(document).ready(function() {
 								<th>Classe</th>
 								<th>Spec</th>
 								<th>Role</th>
+								<th>Atributo</th>
 								<th>Loots</th>
 							</tr>
 						</thead>

@@ -62,10 +62,12 @@
 						<p id="resposta"></p>
 
 					</form>
-					<a href="/loot/usuario/cadastrar"><button class="pure-button new-user">Cadastrar novo usuário</button></a>
 					<br />
 					<br />
 					<a href="/loot/status"><button class="pure-button new-user">Ver lista de prioridades</button></a>
+					<br />
+					<br />
+					<a href="/loot/usuario/cadastrar"><button class="pure-button new-user">Cadastrar novo usuário</button></a>
 				</div>
 				
 			</div>

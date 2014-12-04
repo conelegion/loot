@@ -109,7 +109,7 @@ table {
 td, .pure-table-odd td {
 	border-bottom: 1px solid;
 	border-color: #191919 !important;
-	background-color: #000;
+	background-color: rgba(0,0,0,.3);
 	color: #ff6600;
 }
 

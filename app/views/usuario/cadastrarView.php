@@ -40,7 +40,7 @@
 </head>
 <body>
 	<div id="wrapper" class="pure-u-5-8">
-		<div id="header"><?php include 'app/views/header.html';?></div>
+		<div id="header"><?php if (!empty($_SESSION['usuario'])) include 'app/views/header.html'; else echo "<img src='/loot/img/cone-legion2.png'>";?></div>
 		<div id="content">
 			<h1>Cadastrar usuario</h1>
 			<br />

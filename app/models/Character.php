@@ -204,6 +204,7 @@ class Character {
 			$char['spec'] = $value->getSpec()->getNome();
 			$char['role'] = $value->getSpec()->getRole()->getNome();
 			$char['race'] = $value->getRace()->getNome();
+			$char['atributo'] = $value->getSpec()->getAtributo()->getNome();
 			
 			$char['participacoes'] = $value->getParticipacoes();
 			$char['loots'] = $value->getLoots();

@@ -30,6 +30,7 @@ $(document).ready(function() {
 						+ "<td>" + v.classe + "</td>"
 						+ "<td>" + v.spec + "</td>"
 						+ "<td>" + v.role + "</td>"
+						+ "<td>" + v.atributo + "</td>"
 						+ "<td>" + v.loots + "</td>"
 						+ "<td><img title='Acrescentar loot' src='/loot/img/icons/insert.png' class='btn-insert'>&nbsp;&nbsp;<img title='Reduzir loot' src='/loot/img/icons/minus.png' class='btn-delete'></td>"
 					+ "</tr>");
@@ -87,6 +88,7 @@ $(document).ready(function() {
 								<th>Classe</th>
 								<th>Spec</th>
 								<th>Role</th>
+								<th>Atributo</th>
 								<th>Loots</th>
 								<th width="8%"></th>
 							</tr>
