@@ -1,6 +1,7 @@
 <?php
 require_once 'app/models/DAO/RaceDAO.php';
 /**
+ * Race
  *
  * @Entity
  * @Table(name="race")

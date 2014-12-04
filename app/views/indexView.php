@@ -6,7 +6,7 @@
 <title>Cone Legion | Azralon</title>
 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.1.0/pure-min.css">
 <link rel="stylesheet" href="/loot/include/css/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="/loot/include/css/style.css">
+<link rel="stylesheet" href="/loot/include/css/style3.css">
 <script src="/loot/include/js/jquery.min.js"></script>
 <script type="text/javascript">
  $(document).ready(function() {
@@ -26,8 +26,7 @@
 			        	window.location.href = "/loot/usuario";
 				    }, 3000);
 				} else {
-					alert(resposta);
-					$('#resposta').text("Usuario e/ou senha invalidos.").show();
+					$('#resposta').text("Usuário e/ou senha inválido(s).").show();
 					setTimeout(function() {  
 						 $('#resposta').hide();
 				    }, 2000);
@@ -42,7 +41,7 @@
 </head>
 <body>
 	<div id="wrapper" class="pure-u-5-8">
-		<div id="header"><!-- <img src="/loot/img/cone-legion2.png"> --></div>
+		<div id="header"><img src="/loot/img/cone-legion2.png"></div>
 		<div id="content">
 			<br />
 			<br />
@@ -63,7 +62,12 @@
 						<p id="resposta"></p>
 
 					</form>
+					<a href="/loot/usuario/cadastrar"><button class="pure-button new-user">Cadastrar novo usuário</button></a>
+					<br />
+					<br />
+					<a href="/loot/status"><button class="pure-button new-user">Ver lista de prioridades</button></a>
 				</div>
+				
 			</div>
 
 		</div>

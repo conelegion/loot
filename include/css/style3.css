@@ -26,6 +26,11 @@ table {
 	color: #000;
 }
 
+input[type="text"]:disabled {
+    color: #191919;
+	background-color: #FFB2B2;
+}
+
 .btn-delete, .btn-edit, .btn-insert {
 	cursor: pointer;
 	width: 14px;
@@ -86,6 +91,7 @@ table {
 }
 
 #resposta {
+	font-weight: bold;
 	color: #ff6600;
 }
 
@@ -108,9 +114,9 @@ th{
 
 .menu{list-style:none; border:0px solid #a60303; background-color: #000; float:left; padding-left: 0px; width:100%; margin-top: 1px;}
 	
-.menu li{position:relative; float:left; border-right:0px solid #a60303; }
+.menu li{position:relative; float:left; border-right:0px solid #a60303; cursor: default;}
 
-.menu li a{text-decoration:none; padding:4px 10px; display:block; color: #ff6600; text-align: left; font: 14px arial;}
+.menu li a{text-decoration:none; padding:4px 10px; display:block; color: #ff6600; text-align: left; font: 14px arial; font-weight: bold;}
 
 .menu li a:hover{background:#191919; color:#ff6600; -moz-box-shadow:0 3px 10px 0 #000; -webkit-box-shadow:0 3px 10px 0 #000; text-shadow:0px 0px 5px #000; }
 
@@ -122,4 +128,10 @@ th{
 
 .pure-group input {
 	margin: 0 auto !important;
+}
+
+.new-user, .new-user:hover {
+	background-color: #ff6600;
+	font-size: 16px;
+	text-decoration: none;
 }

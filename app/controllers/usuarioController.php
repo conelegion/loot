@@ -37,10 +37,7 @@ class UsuarioController extends Controller {
 	}
 	
 	function cadastrar() {
-		if(empty($_SESSION['usuario']))
-			header("Location: /loot");
-		else
-			$this->View('./usuario/cadastrar');
+		$this->View('./usuario/cadastrar');
 	}
 	
 	function editar() {
@@ -51,30 +48,27 @@ class UsuarioController extends Controller {
 	}
 	
 	function insert() {
-		if(empty($_SESSION['usuario']))
-			header("Location: /loot");
-		else {
-			$branco = false;
-			foreach ($_POST as $campo) {
-				if(empty($campo)) {
-					$branco = true;
-					break;
-				}
+		$branco = false;
+		foreach ($_POST as $campo) {
+			if(empty($campo)) {
+				$branco = true;
+				break;
 			}
-			
-			if($branco) {
-				echo "empty";
-			} else {
-				$usuario = new Usuario();
-				
-				$usuario->setNome($_POST['txt-nome']);
-				$usuario->setMail($_POST['txt-email']);
-				$usuario->setNick($_POST['txt-nick']);
-				$usuario->setSenha($_POST['txt-senha']);
+		}
 		
-				echo $usuario->insert();
-			}
-		}	  
+		if($branco) {
+			echo "empty";
+		} else {
+			$usuario = new Usuario();
+			
+			$usuario->setNome($_POST['txt-nome']);
+			$usuario->setMail($_POST['txt-email']);
+			$usuario->setNick($_POST['txt-nick']);
+			$usuario->setSenha($_POST['txt-senha']);
+	
+			echo $usuario->insert();
+		}
+			  
 	}
 	
 	function update() {

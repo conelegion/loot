@@ -127,25 +127,25 @@
 				    <fieldset>
 				    	<div class="pure-control-group">
 				    		<label>Nome</label>
-				        	<input type="text" class="pure-input-1-6 txt-nome" name="txt-nome" placeholder="Nome">
+				        	<input type="text" class="pure-input-1-3 txt-nome" name="txt-nome" placeholder="Nome">
 				        </div>
 
 				        <div class="pure-control-group">
 				        	<label>E-mail</label>
-				        	<input type="text" class="pure-input-1-6 txt-email" name="txt-email" placeholder="E-mail">
+				        	<input type="text" class="pure-input-1-3 txt-email" name="txt-email" placeholder="E-mail">
 				        </div>
 
 				        <div class="pure-control-group">
 				        	<label>Nick</label>
-				        	<input type="text" class="pure-input-1-6 txt-nick" name="txt-nick" placeholder="Bnet Name">
+				        	<input type="text" class="pure-input-1-3 txt-nick" name="txt-nick" placeholder="Bnet Name">
 				        </div>			
 					    <div class="pure-control-group">
 							<label>Senha</label>
-					        <input type="password" class="pure-input-1-6 txt-senha" name="txt-senha" placeholder="Senha">
+					        <input type="password" class="pure-input-1-3 txt-senha" name="txt-senha" placeholder="Senha">
 					    </div>
 						<div class="pure-control-group">
 					        <label>Ativo</label>
-					        <select name="txt-ativo" class="pure-input-1-12 txt-ativo" id="txt-ativo">
+					        <select name="txt-ativo" class="pure-input-1-3 txt-ativo" id="txt-ativo">
 								<option value="1">Sim</option>
 								<option value="-1">Não</option>
 					        </select>

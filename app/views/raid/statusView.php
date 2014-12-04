@@ -11,7 +11,6 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-	$('#div-adicionar').hide();
 	
 	buscarCharsRaid();
 
@@ -31,49 +30,17 @@ $(document).ready(function() {
 						+ "<td>" + v.spec + "</td>"
 						+ "<td>" + v.role + "</td>"
 						+ "<td>" + v.loots + "</td>"
-						+ "<td><img title='Acrescentar loot' src='/loot/img/icons/insert.png' class='btn-insert'>&nbsp;&nbsp;<img title='Reduzir loot' src='/loot/img/icons/minus.png' class='btn-delete'></td>"
 					+ "</tr>");
 				});
 			}
 		});
     };
-	
-    $("table").on('click', '.btn-delete', function() {
-    	var idChar = $(this).parent().parent().find('.id').text();
-		var nome = $(this).parent().parent().find('.nome').text();
-    	if(confirm("Deseja realmente remover um loot do char " + nome + "?")) {
-	    	$.ajax({
-				type: "post",
-				url: "/loot/character/removeLoot",
-				data: {id : idChar},
-				success: function(resposta) {
-					buscarCharsRaid();
-				}
-			});
-		}
-    }); 
-
-    $("table").on('click', '.btn-insert', function() {
-    	var idChar = $(this).parent().parent().find('.id').text();
-		var nome = $(this).parent().parent().find('.nome').text();
-    	if(confirm("Deseja realmente adicionar um loot do char " + nome + "?")) {
-	    	$.ajax({
-				type: "post",
-				url: "/loot/character/addLoot",
-				data: {id : idChar},
-				success: function(resposta) {
-					buscarCharsRaid();
-				}
-			});
-		}
-    });
-
 });
 </script>
 </head>
 <body>
 <div id="wrapper" class="pure-u-5-8">
-<div id="header"><?php include 'app/views/header.html';?></div>
+<div id="header"><img src="/loot/img/cone-legion2.png"></div>
 		<div id="content">
 			<h1>Prioridades de loot</h1>
 	    	<div class="pure-control-group div-lista" id="div-lista">
@@ -88,12 +55,14 @@ $(document).ready(function() {
 								<th>Spec</th>
 								<th>Role</th>
 								<th>Loots</th>
-								<th width="8%"></th>
 							</tr>
 						</thead>
 						<tbody></tbody>
 					</table>
 				</div>
+				<br />
+				<br />
+				<a href="/loot" class="new-user"><button class="pure-button">Voltar</button></a>
 	        </div>        
 		</div>
 			

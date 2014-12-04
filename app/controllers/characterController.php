@@ -173,8 +173,6 @@ class CharacterController extends Controller {
 	}
 	
 	function getByRaid() {
-		if(empty($_SESSION['usuario']))
-			header("Location: /loot");
 			
 		$usuarios = Character::getByRaid();
 			
