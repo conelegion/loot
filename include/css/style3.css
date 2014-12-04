@@ -31,6 +31,11 @@ input[type="text"]:disabled {
 	background-color: #FFB2B2;
 }
 
+label {
+    color: #ff6600 !important;
+	font-weight: bold;
+}
+
 .btn-delete, .btn-edit, .btn-insert {
 	cursor: pointer;
 	width: 14px;
@@ -97,11 +102,13 @@ input[type="text"]:disabled {
 
 table {
 	border-color: #ff6600 !important;
+	border-left-color: #191919 !important;
+	border-right-color: #191919 !important;
 }
 
 td, .pure-table-odd td {
 	border-bottom: 1px solid;
-	border-color: #ff6600 !important;
+	border-color: #191919 !important;
 	background-color: #000;
 	color: #ff6600;
 }
